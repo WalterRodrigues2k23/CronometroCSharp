@@ -34,6 +34,7 @@
             btnReiniciar = new Button();
             timer1 = new System.Windows.Forms.Timer(components);
             label2 = new Label();
+            listBox1 = new ListBox();
             SuspendLayout();
             // 
             // btnIniciar
@@ -89,12 +90,23 @@
             label2.TabIndex = 3;
             label2.Text = "00:00:00:000";
             // 
+            // listBox1
+            // 
+            listBox1.FormattingEnabled = true;
+            listBox1.ItemHeight = 15;
+            listBox1.Location = new Point(95, 257);
+            listBox1.Name = "listBox1";
+            listBox1.Size = new Size(611, 229);
+            listBox1.TabIndex = 4;
+            listBox1.UseWaitCursor = true;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(29, 38, 48);
-            ClientSize = new Size(786, 300);
+            ClientSize = new Size(786, 526);
+            Controls.Add(listBox1);
             Controls.Add(label2);
             Controls.Add(btnReiniciar);
             Controls.Add(btnParar);
@@ -115,5 +127,6 @@
         private Button btnReiniciar;
         private System.Windows.Forms.Timer timer1;
         private Label label2;
+        private ListBox listBox1;
     }
 }

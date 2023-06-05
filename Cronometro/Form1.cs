@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Timers;
 
@@ -8,6 +9,17 @@ namespace Cronometro
     {
         System.Timers.Timer timer;
         int h, m, s, ms;
+        List<string> tempos;
+
+        public Form1()
+        {
+            InitializeComponent();
+            h = 0;
+            m = 0;
+            s = 0;
+            ms = 0;
+            tempos = new List<string>();
+        }
 
         private void btnIniciar_Click(object sender, EventArgs e)
         {
@@ -17,6 +29,9 @@ namespace Cronometro
         private void btnParar_Click(object sender, EventArgs e)
         {
             timer.Stop();
+            string tempoFormatado = $"{h:00}:{m:00}:{s:00}:{ms:000}";
+            tempos.Add(tempoFormatado);
+            listBox1.Items.Add(tempoFormatado);
         }
 
         private void btnReiniciar_Click(object sender, EventArgs e)
@@ -27,15 +42,7 @@ namespace Cronometro
             s = 0;
             ms = 0;
             label2.Text = "00:00:00:000";
-        }
-
-        public Form1()
-        {
-            InitializeComponent();
-            h = 0;
-            m = 0;
-            s = 0;
-            ms = 0;
+            tempos.Clear();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -67,7 +74,8 @@ namespace Cronometro
                 }
             }));
 
-            label2.Invoke(new Action(() => {
+            label2.Invoke(new Action(() =>
+            {
                 label2.Text = $"{h:00}:{m:00}:{s:00}:{ms:000}";
             }));
         }
